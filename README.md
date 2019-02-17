@@ -1,4 +1,4 @@
-# KVault
+# KVault Secured Web Wallet
 
 ![screenshot](/docs/screenshot-kvault-login.png)
 
@@ -10,7 +10,6 @@ apt-get update
 sudo apt install -y git nginx python-certbot-nginx postgresql postgresql-contrib redis-server	
 Install PostgreSQL
 Set a password for postgresql
-```
 
 sudo passwd postgres
 Login and set password with postgres
@@ -54,6 +53,7 @@ Setup Web Wallet
 Edit these files:
 
 services/main/run.sh
+
 #!/usr/bin/env bash
 HOST_URI='https://kvault.kriegerrand.com' \ # Web wallet address
 HOST_PORT=':8080' \ # Internal server port
@@ -61,6 +61,7 @@ USER_URI='http://localhost:8081' \ # Internal requests to user api
 WALLET_URI='http://localhost:8082' \ # Internal requests to wallet api
 go run main.go utils.go
 services/wallet/run.sh
+
 #!/usr/bin/env bash
 DB_USER=<postgres username> \ # Postgres DB username, NOT system account username
 DB_PWD=<postgres password> \ # Postgres DB password, NOT system account password
@@ -70,6 +71,7 @@ RPC_PWD=<kriegerrand-service RPC password>  \ # Your kriegerrand-service RPC pas
 RPC_PORT=':8070' \ # Your kriegerrand-service RPC port
 go run wallet.go utils.go
 services/user/run.sh
+
 #!/usr/bin/env bash
 DB_USER=<postgres username> \ # Postgres DB username, NOT system account username
 DB_PWD=<postgres password> \ # Postgres DB password, NOT system account password
@@ -77,6 +79,7 @@ HOST_URI='http://localhost' \ # Internal user api
 HOST_PORT=':8081' \ # Internal user api port
 WALLET_URI='http://localhost:8082' \ # Internal wallet api
 go run users.go utils.go
+
 ~$ cd services/main ; ./run.sh & disown
 ~$ cd services/wallet ; ./run.sh & disown
 ~$ cd services/user ; ./run.sh & disown
