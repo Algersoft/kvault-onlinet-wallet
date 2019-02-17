@@ -43,14 +43,14 @@ go get github.com/gomodule/redigo/redis \
 	
 ```
 
-#### Install Azur Deamon
+#### Install kriegerrand MindBraind
 ```
 wget https://kriegerrand.org/latest
 tar -xvf linux-cli.tar.gz
 rm linux-cli.tar.gz
 ```
 
-#### Setup Azur Deamon
+#### Setup kriegerrand MindBraind
 
 Create Wallet
 
